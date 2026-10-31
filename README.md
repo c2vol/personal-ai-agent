@@ -6,7 +6,7 @@ queue (eventually by texting it from my phone), the agent works through it using
 Anthropic API, and the results are waiting when I come back.
 
 ## Status
-Just started (2026-10-31). Planning and setup.
+Version 1 (2026-10-31): folder task queue, read-and-draft only, with a free dry-run mode.
 
 ## Goals
 - Run an agent on my Mac mini that can work on tasks while I'm offline
@@ -21,9 +21,21 @@ Just started (2026-10-31). Planning and setup.
 - Results go to an output folder and/or email.
 - Start read-and-draft only. Widen permissions one tool at a time.
 
+## Quick start
+```bash
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+mkdir -p queue && echo "Plan my study week" > queue/plan.txt
+python3 agent.py --dry-run     # free test run; drop --dry-run once .env has the key
+```
+Drafts land in `output/`. See `Notes/2026-10-31-first-agent-version.md` for details.
+
 ## Folder layout
 - `Notes/`  Dated notes on decisions, concepts learned, and what broke and how I fixed it
 - `README.md`  This file
+- `agent.py`  The agent: reads tasks from `queue/`, writes drafts to `output/`
+- `tests/`  Unit tests (`python3 -m unittest`)
+- `queue/`, `output/`  Tasks and drafts (git-ignored, created on first run)
 - `claude-project-instructions.md`  Custom instructions for the matching Claude Project
 - `.env.example`  Template for `.env` (copy it, add the real API key; `.env` is git-ignored)
 - `.gitignore`  Keeps `.env`, Python caches, and macOS files out of Git
