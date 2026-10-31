@@ -2,6 +2,7 @@
 .env
 .env.*
 !.env.example
+*.key
 
 # Python
 __pycache__/
@@ -11,3 +12,8 @@ venv/
 
 # macOS
 .DS_Store
+
+# My tasks and the agent's drafts stay on my machine (they can be personal)
+queue/
+output/
+logs/
