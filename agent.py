@@ -30,6 +30,8 @@ OUTPUT_DIR = PROJECT_DIR / "output"
 DEFAULT_MODEL = "claude-sonnet-5-5"
 MAX_OUTPUT_TOKENS = 2000  # roughly 1,500 words; keeps each task to a few cents at most
 TASK_EXTENSIONS = {".txt", ".md"}
+# Placeholder values from .env.example; a key that is one of these isn't real yet.
+PLACEHOLDER_KEYS = {"", "your-key-goes-in-.env-not-here", "replace-me-with-your-key"}
 
 SYSTEM_PROMPT = (
     "You are Evan's personal assistant agent. You work on one task at a time "
@@ -129,7 +131,7 @@ def main() -> None:
 
     load_env_file(PROJECT_DIR / ".env")
     key = os.environ.get("ANTHROPIC_API_KEY", "")
-    dry_run = args.dry_run or not key or key.startswith("replace-me")
+    dry_run = args.dry_run or key in PLACEHOLDER_KEYS
     if dry_run and not args.dry_run:
         print("No API key found in .env, so running in dry-run mode (no cost).")
     model = os.environ.get("ANTHROPIC_MODEL", DEFAULT_MODEL)
