@@ -24,6 +24,9 @@ Just started (2026-10-31). Planning and setup.
 ## Folder layout
 - `Notes/`  Dated notes on decisions, concepts learned, and what broke and how I fixed it
 - `README.md`  This file
+- `claude-project-instructions.md`  Custom instructions for the matching Claude Project
+- `.env.example`  Template for `.env` (copy it, add the real API key; `.env` is git-ignored)
+- `.gitignore`  Keeps `.env`, Python caches, and macOS files out of Git
 
 ## Costs (approximate)
 - Mac mini: $0 extra (already owned)

@@ -1,0 +1,13 @@
+# Secrets: never commit these. The real API key lives only in .env on my machine.
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# macOS
+.DS_Store
